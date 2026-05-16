@@ -6,7 +6,7 @@ from sklearn.model_selection import train_test_split
 
 
 def load_data(path):
-  
+
   df = pd.read_csv(path)
 
   return df
@@ -143,7 +143,7 @@ def preprocessing_pipeline(input_path, output_path):
 
 if __name__ == "__main__":
 
-  INPUT_PATH = "../Telco-Customer-Churn.csv"
+  INPUT_PATH = "Telco-Customer-Churn.csv"
 
   OUTPUT_PATH = (
     "telco_preprocessing/"
