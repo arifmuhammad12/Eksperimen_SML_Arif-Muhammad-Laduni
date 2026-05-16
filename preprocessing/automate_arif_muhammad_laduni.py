@@ -23,7 +23,8 @@ def remove_unused_columns(df):
 def convert_data_types(df):
 
   df["TotalCharges"] = pd.to_numeric(
-    df["TotalCharges"]
+    df["TotalCharges"],
+    errors="coerce"
   )
 
   return df
@@ -122,6 +123,10 @@ def preprocessing_pipeline(input_path, output_path):
   df = remove_unused_columns(df)
   df = convert_data_types(df)
   df = check_missing_values(df)
+  df["TotalCharges"].fillna(
+    df["TotalCharges"].median(),
+    inplace=True
+  )
   df = remove_duplicates(df)
   df = encode_target(df)
   df = encode_categorical_features(df)
